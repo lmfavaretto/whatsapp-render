@@ -1,6 +1,5 @@
 const express = require('express');
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const chromium = require('chrome-aws-lambda');
 const qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const cors = require('cors');
@@ -23,12 +22,11 @@ let client = null;
 let qrCode = '';
 let isLoggedIn = false;
 
-async function startClient() {
+function startClient() {
   console.log("🔄 Iniciando nova instância do client...");
   client = new Client({
     authStrategy: new LocalAuth(),
     puppeteer: {
-      executablePath: await chromium.executablePath,
       headless: true,
       args: [
         '--no-sandbox',
