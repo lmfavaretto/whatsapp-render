@@ -7,7 +7,6 @@ const cors = require('cors');
 process.on('unhandledRejection', (reason, promise) => {
   console.log('Unhandled Rejection:', reason);
 });
-
 process.on('uncaughtException', (err) => {
   console.log('Uncaught Exception:', err);
 });
@@ -78,7 +77,7 @@ function startClient() {
 startClient();
 
 setInterval(() => {
-  console.log('🔁 Ping to keep Railway alive');
+  console.log('🔁 Ping to keep alive');
 }, 10000);
 
 app.get('/qr', (req, res) => {
